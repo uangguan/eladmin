@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
 * @author hgw
-* @date 2020-04-11
+* @date 2020-04-12
 */
 @Data
 public class ProductCatagoryDto implements Serializable {
@@ -25,4 +25,7 @@ public class ProductCatagoryDto implements Serializable {
 
     /** 创建日期 */
     private Timestamp createTime;
+
+    /** 所属商家 */
+    private Long merchantId;
 }

@@ -99,6 +99,7 @@ public class ProductCatagoryServiceImpl implements ProductCatagoryService {
             map.put("上级分类", productCatagory.getPid());
             map.put("状态", productCatagory.getEnabled());
             map.put("创建日期", productCatagory.getCreateTime());
+            map.put("所属商家", productCatagory.getMerchantId());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);

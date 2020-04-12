@@ -5,12 +5,15 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import org.hibernate.annotations.*;
 import java.sql.Timestamp;
 import java.io.Serializable;
 
 /**
 * @author hgw
-* @date 2020-04-11
+* @date 2020-04-12
 */
 @Entity
 @Data
@@ -40,7 +43,13 @@ public class ProductCatagory implements Serializable {
 
     /** 创建日期 */
     @Column(name = "create_time")
+    @CreationTimestamp
     private Timestamp createTime;
+
+    /** 所属商家 */
+    @Column(name = "merchant_id",nullable = false)
+    @NotNull
+    private Long merchantId;
 
     public void copy(ProductCatagory source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

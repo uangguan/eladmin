@@ -6,7 +6,7 @@ import me.zhengjie.annotation.Query;
 
 /**
 * @author hgw
-* @date 2020-04-11
+* @date 2020-04-12
 */
 @Data
 public class ProductQueryCriteria{
@@ -19,7 +19,7 @@ public class ProductQueryCriteria{
     @Query(type = Query.Type.INNER_LIKE)
     private String name;
 
-    /** 模糊 */
-    @Query(type = Query.Type.INNER_LIKE)
+    /** 精确 */
+    @Query
     private Long merchantId;
 }
