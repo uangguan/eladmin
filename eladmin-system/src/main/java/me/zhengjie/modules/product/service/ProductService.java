@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
 * @author hgw
-* @date 2020-04-11
 */
 public interface ProductService {
 

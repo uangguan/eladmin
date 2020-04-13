@@ -13,7 +13,6 @@ import java.io.Serializable;
 
 /**
 * @author hgw
-* @date 2020-04-11
 */
 @Entity
 @Data

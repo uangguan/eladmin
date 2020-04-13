@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 
 /**
 * @author ${author}
-* @date ${date}
+<#--* @date ${date}-->
 */
 @Data
 public class ${className}Dto implements Serializable {

@@ -44,7 +44,7 @@ import java.util.LinkedHashMap;
 
 /**
 * @author ${author}
-* @date ${date}
+<#--* @date ${date}-->
 */
 @Service
 //@CacheConfig(cacheNames = "${changeClassName}")

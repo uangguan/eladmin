@@ -22,7 +22,7 @@ import java.io.Serializable;
 
 /**
 * @author ${author}
-* @date ${date}
+<#--* @date ${date}-->
 */
 @Entity
 @Data

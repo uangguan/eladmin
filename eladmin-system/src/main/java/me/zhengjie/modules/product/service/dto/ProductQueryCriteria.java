@@ -6,7 +6,6 @@ import me.zhengjie.annotation.Query;
 
 /**
 * @author hgw
-* @date 2020-04-12
 */
 @Data
 public class ProductQueryCriteria{

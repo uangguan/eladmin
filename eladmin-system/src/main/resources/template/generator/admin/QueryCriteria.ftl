@@ -16,7 +16,7 @@ import me.zhengjie.annotation.Query;
 
 /**
 * @author ${author}
-* @date ${date}
+<#--* @date ${date}-->
 */
 @Data
 public class ${className}QueryCriteria{

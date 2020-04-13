@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
 * @author hgw
-* @date 2020-04-11
 */
 @Api(tags = "商品管理管理")
 @RestController
