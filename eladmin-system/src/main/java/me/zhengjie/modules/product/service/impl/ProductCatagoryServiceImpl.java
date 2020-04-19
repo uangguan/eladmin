@@ -19,12 +19,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import me.zhengjie.utils.PageUtil;
 import me.zhengjie.utils.QueryHelp;
-import java.util.List;
-import java.util.Map;
+import org.springframework.util.CollectionUtils;
+import java.util.*;
 import java.io.IOException;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 /**
 * @author hgw
@@ -103,5 +102,45 @@ public class ProductCatagoryServiceImpl implements ProductCatagoryService {
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);
+    }
+
+    @Override
+    public Object buildTree(List<ProductCatagoryDto> productCatagoryDtos) {
+        Set<ProductCatagoryDto> trees = new LinkedHashSet<>();
+        Set<ProductCatagoryDto> catagorys= new LinkedHashSet<>();
+        List<String> catagoryNames = productCatagoryDtos.stream().map(ProductCatagoryDto::getName).collect(Collectors.toList());
+        boolean isChild;
+        for (ProductCatagoryDto productCatagoryDto : productCatagoryDtos) {
+            isChild = false;
+            if ("0".equals(productCatagoryDto.getPid().toString())) {
+                trees.add(productCatagoryDto);
+            }
+            for (ProductCatagoryDto it : productCatagoryDtos) {
+                if (it.getPid().equals(productCatagoryDto.getId())) {
+                    isChild = true;
+                    if (productCatagoryDto.getChildren() == null) {
+                        productCatagoryDto.setChildren(new ArrayList<>());
+                    }
+                    productCatagoryDto.getChildren().add(it);
+                }
+            }
+            if(isChild) {
+                catagorys.add(productCatagoryDto);
+            }
+//            else if(!catagoryNames.contains(productCatagoryRepository.findNameById(deptDTO.getPid()))) {
+//                depts.add(productCatagoryDto);
+//            }
+        }
+
+        if (CollectionUtils.isEmpty(trees)) {
+            trees = catagorys;
+        }
+
+        Integer totalElements = productCatagoryDtos.size();
+
+        Map<String,Object> map = new HashMap<>(2);
+        map.put("totalElements",totalElements);
+        map.put("content",CollectionUtils.isEmpty(trees)? productCatagoryDtos :trees);
+        return map;
     }
 }

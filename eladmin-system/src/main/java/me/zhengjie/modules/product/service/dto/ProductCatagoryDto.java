@@ -1,8 +1,12 @@
 package me.zhengjie.modules.product.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import me.zhengjie.modules.system.service.dto.DeptDto;
+
 import java.sql.Timestamp;
 import java.io.Serializable;
+import java.util.List;
 
 /**
 * @author hgw
@@ -28,4 +32,12 @@ public class ProductCatagoryDto implements Serializable {
 
     /** 所属商家 */
     private Long merchantId;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private List<ProductCatagoryDto> children;
+
+    public String getLabel() {
+        return name;
+    }
+
 }

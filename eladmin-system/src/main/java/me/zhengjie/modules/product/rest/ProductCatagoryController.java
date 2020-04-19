@@ -3,6 +3,7 @@ package me.zhengjie.modules.product.rest;
 import me.zhengjie.aop.log.Log;
 import me.zhengjie.modules.product.domain.ProductCatagory;
 import me.zhengjie.modules.product.service.ProductCatagoryService;
+import me.zhengjie.modules.product.service.dto.ProductCatagoryDto;
 import me.zhengjie.modules.product.service.dto.ProductCatagoryQueryCriteria;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.*;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -69,5 +71,14 @@ public class ProductCatagoryController {
     public ResponseEntity<Object> deleteAll(@RequestBody Long[] ids) {
         productCatagoryService.deleteAll(ids);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/tree")
+    @Log("查询商品分类树")
+    @ApiOperation("查询商品分类树")
+    @PreAuthorize("@el.check('productCatagory:list')")
+    public ResponseEntity<Object> getProductCatagorys(ProductCatagoryQueryCriteria criteria){
+        List<ProductCatagoryDto> productCatagoryDtos = productCatagoryService.queryAll(criteria);
+        return new ResponseEntity<>(productCatagoryService.buildTree(productCatagoryDtos),HttpStatus.OK);
     }
 }
