@@ -97,11 +97,11 @@ public class ProductServiceImpl implements ProductService {
             map.put("商品名称", product.getName());
             map.put("商品描述", product.getDescribe());
             map.put("商品规格", product.getSpecification());
-            map.put("所属分类", product.getCategoryId());
+            map.put("所属分类", product.getProductCatagory().getName());
             map.put("库存", product.getCount());
             map.put("原价", product.getOriginalPrice());
             map.put("活动价", product.getActivityPrice());
-            map.put("所属商家", product.getMerchantId());
+            map.put("所属商家", product.getDept().getName());
             map.put("状态", product.getEnabled());
             map.put("创建日期", product.getCreateTime());
             list.add(map);

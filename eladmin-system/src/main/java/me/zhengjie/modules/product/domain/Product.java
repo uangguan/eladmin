@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import me.zhengjie.modules.system.domain.Dept;
 import org.hibernate.annotations.*;
 import java.sql.Timestamp;
 import java.io.Serializable;
@@ -39,9 +41,9 @@ public class Product implements Serializable {
     private String specification;
 
     /** 所属分类 */
-    @Column(name = "category_id",nullable = false)
-    @NotNull
-    private Long categoryId;
+    @OneToOne
+    @JoinColumn(name = "category_id")
+    private ProductCatagory productCatagory;
 
     /** 库存 */
     @Column(name = "count",nullable = false)
@@ -59,9 +61,9 @@ public class Product implements Serializable {
     private Double activityPrice;
 
     /** 所属商家 */
-    @Column(name = "merchant_id",nullable = false)
-    @NotNull
-    private Long merchantId;
+    @OneToOne
+    @JoinColumn(name = "merchant_id")
+    private Dept dept;
 
     /** 状态 */
     @Column(name = "enabled",nullable = false)
