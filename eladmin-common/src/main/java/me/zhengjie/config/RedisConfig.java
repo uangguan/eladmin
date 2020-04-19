@@ -36,7 +36,7 @@ import java.util.Map;
  */
 @Slf4j
 @Configuration
-@EnableCaching
+//@EnableCaching
 @ConditionalOnClass(RedisOperations.class)
 @EnableConfigurationProperties(RedisProperties.class)
 public class RedisConfig extends CachingConfigurerSupport {
