@@ -1,4 +1,4 @@
-package me.zhengjie.modules.product.service.dto;
+package me.zhengjie.modules.order.service.dto;
 
 import lombok.Data;
 import java.math.BigDecimal;

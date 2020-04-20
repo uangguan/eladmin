@@ -1,8 +1,8 @@
-package me.zhengjie.modules.product.service.mapper;
+package me.zhengjie.modules.order.service.mapper;
 
 import me.zhengjie.base.BaseMapper;
-import me.zhengjie.modules.product.domain.OrderItem;
-import me.zhengjie.modules.product.service.dto.OrderItemDto;
+import me.zhengjie.modules.order.domain.OrderItem;
+import me.zhengjie.modules.order.service.dto.OrderItemDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 

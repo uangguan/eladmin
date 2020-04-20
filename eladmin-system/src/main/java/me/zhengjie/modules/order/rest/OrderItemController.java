@@ -1,9 +1,9 @@
-package me.zhengjie.modules.product.rest;
+package me.zhengjie.modules.order.rest;
 
 import me.zhengjie.aop.log.Log;
-import me.zhengjie.modules.product.domain.OrderItem;
-import me.zhengjie.modules.product.service.OrderItemService;
-import me.zhengjie.modules.product.service.dto.OrderItemQueryCriteria;
+import me.zhengjie.modules.order.domain.OrderItem;
+import me.zhengjie.modules.order.service.OrderItemService;
+import me.zhengjie.modules.order.service.dto.OrderItemQueryCriteria;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package me.zhengjie.modules.product.domain;
+package me.zhengjie.modules.order.domain;
 
 import lombok.Data;
 import cn.hutool.core.bean.BeanUtil;

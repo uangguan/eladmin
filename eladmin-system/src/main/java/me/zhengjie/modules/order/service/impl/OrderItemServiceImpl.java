@@ -1,13 +1,13 @@
-package me.zhengjie.modules.product.service.impl;
+package me.zhengjie.modules.order.service.impl;
 
-import me.zhengjie.modules.product.domain.OrderItem;
+import me.zhengjie.modules.order.domain.OrderItem;
 import me.zhengjie.utils.ValidationUtil;
 import me.zhengjie.utils.FileUtil;
-import me.zhengjie.modules.product.repository.OrderItemRepository;
-import me.zhengjie.modules.product.service.OrderItemService;
-import me.zhengjie.modules.product.service.dto.OrderItemDto;
-import me.zhengjie.modules.product.service.dto.OrderItemQueryCriteria;
-import me.zhengjie.modules.product.service.mapper.OrderItemMapper;
+import me.zhengjie.modules.order.repository.OrderItemRepository;
+import me.zhengjie.modules.order.service.OrderItemService;
+import me.zhengjie.modules.order.service.dto.OrderItemDto;
+import me.zhengjie.modules.order.service.dto.OrderItemQueryCriteria;
+import me.zhengjie.modules.order.service.mapper.OrderItemMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;

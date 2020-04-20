@@ -1,8 +1,8 @@
-package me.zhengjie.modules.product.service;
+package me.zhengjie.modules.order.service;
 
-import me.zhengjie.modules.product.domain.OrderItem;
-import me.zhengjie.modules.product.service.dto.OrderItemDto;
-import me.zhengjie.modules.product.service.dto.OrderItemQueryCriteria;
+import me.zhengjie.modules.order.domain.OrderItem;
+import me.zhengjie.modules.order.service.dto.OrderItemDto;
+import me.zhengjie.modules.order.service.dto.OrderItemQueryCriteria;
 import org.springframework.data.domain.Pageable;
 import java.util.Map;
 import java.util.List;
