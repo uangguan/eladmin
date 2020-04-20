@@ -31,6 +31,7 @@ CREATE TABLE `product_catagory` (
 
 DROP TABLE IF EXISTS `order_main`;
 CREATE TABLE `order_main` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单id',
   `order_sn` varchar(64) NOT NULL COMMENT '订单编号',
   `create_time` datetime NOT NULL COMMENT '提交时间',
   `member_username` varchar(64) NOT NULL COMMENT '用户帐号',
@@ -55,7 +56,8 @@ CREATE TABLE `order_main` (
   `delivery_time` datetime DEFAULT NULL COMMENT '发货时间',
   `receive_time` datetime DEFAULT NULL COMMENT '确认收货时间',
   `modify_time` datetime DEFAULT NULL COMMENT '修改时间',
-  `merchant_id` bigint(20) NOT NULL COMMENT '所属商家'
+  `merchant_id` bigint(20) NOT NULL COMMENT '所属商家',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 DROP TABLE IF EXISTS `order_item`;
