@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
 * @author hgw
 */
-@Api(tags = "/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item管理")
+@Api(tags = "订单明细管理")
 @RestController
 @RequestMapping("/api/orderItem")
 public class OrderItemController {
@@ -37,32 +37,32 @@ public class OrderItemController {
     }
 
     @GetMapping
-    @Log("查询/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item")
-    @ApiOperation("查询/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item")
+    @Log("查询订单明细")
+    @ApiOperation("查询订单明细")
     @PreAuthorize("@el.check('orderItem:list')")
     public ResponseEntity<Object> getOrderItems(OrderItemQueryCriteria criteria, Pageable pageable){
         return new ResponseEntity<>(orderItemService.queryAll(criteria,pageable),HttpStatus.OK);
     }
 
     @PostMapping
-    @Log("新增/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item")
-    @ApiOperation("新增/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item")
+    @Log("新增订单明细")
+    @ApiOperation("新增订单明细")
     @PreAuthorize("@el.check('orderItem:add')")
     public ResponseEntity<Object> create(@Validated @RequestBody OrderItem resources){
         return new ResponseEntity<>(orderItemService.create(resources),HttpStatus.CREATED);
     }
 
     @PutMapping
-    @Log("修改/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item")
-    @ApiOperation("修改/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item")
+    @Log("修改订单明细")
+    @ApiOperation("修改订单明细")
     @PreAuthorize("@el.check('orderItem:edit')")
     public ResponseEntity<Object> update(@Validated @RequestBody OrderItem resources){
         orderItemService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @Log("删除/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item")
-    @ApiOperation("删除/Users/hgw-mini/IdeaProjects/eladmin-qd/src/views/order/item")
+    @Log("删除订单明细")
+    @ApiOperation("删除订单明细")
     @PreAuthorize("@el.check('orderItem:del')")
     @DeleteMapping
     public ResponseEntity<Object> deleteAll(@RequestBody Long[] ids) {
