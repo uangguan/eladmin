@@ -31,19 +31,18 @@ CREATE TABLE `product_catagory` (
 
 DROP TABLE IF EXISTS `order_main`;
 CREATE TABLE `order_main` (
-  `order_sn` varchar(64) DEFAULT NULL COMMENT '订单编号',
-  `create_time` datetime DEFAULT NULL COMMENT '提交时间',
-  `member_username` varchar(64) DEFAULT NULL COMMENT '用户帐号',
-  `total_amount` decimal(10,2) DEFAULT NULL COMMENT '订单总金额',
-  `pay_amount` decimal(10,2) DEFAULT NULL COMMENT '应付金额（实际支付金额）',
+  `order_sn` varchar(64) NOT NULL COMMENT '订单编号',
+  `create_time` datetime NOT NULL COMMENT '提交时间',
+  `member_username` varchar(64) NOT NULL COMMENT '用户帐号',
+  `total_amount` decimal(10,2) NOT NULL COMMENT '订单总金额',
+  `pay_amount` decimal(10,2) NOT NULL COMMENT '应付金额（实际支付金额）',
   `freight_amount` decimal(10,2) DEFAULT NULL COMMENT '运费金额',
   `pay_type` int(1) DEFAULT NULL COMMENT '支付方式：0->未支付；1->支付宝；2->微信',
-  `source_type` int(1) DEFAULT NULL COMMENT '订单来源：0->PC订单；1->app订单',
   `status` int(1) DEFAULT NULL COMMENT '订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
   `delivery_company` varchar(64) DEFAULT NULL COMMENT '物流公司(配送方式)',
   `delivery_sn` varchar(64) DEFAULT NULL COMMENT '物流单号',
-  `receiver_name` varchar(100) NOT NULL COMMENT '收货人姓名',
-  `receiver_phone` varchar(32) NOT NULL COMMENT '收货人电话',
+  `receiver_name` varchar(100) DEFAULT NULL COMMENT '收货人姓名',
+  `receiver_phone` varchar(32) DEFAULT NULL COMMENT '收货人电话',
   `receiver_post_code` varchar(32) DEFAULT NULL COMMENT '收货人邮编',
   `receiver_province` varchar(32) DEFAULT NULL COMMENT '省份/直辖市',
   `receiver_city` varchar(32) DEFAULT NULL COMMENT '城市',
@@ -63,13 +62,13 @@ CREATE TABLE `order_main` (
 DROP TABLE IF EXISTS `order_item`;
 CREATE TABLE `order_item` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `order_sn` varchar(64) DEFAULT NULL COMMENT '订单编号',
-  `product_id` bigint(20) DEFAULT NULL,
-  `product_name` varchar(200) DEFAULT NULL,
-  `product_price` decimal(10,2) DEFAULT NULL COMMENT '销售价格',
-  `product_quantity` int(11) DEFAULT NULL COMMENT '购买数量',
-  `product_category_id` bigint(20) DEFAULT NULL COMMENT '商品分类id',
-  `product_category_name` varchar(500) DEFAULT NULL COMMENT '商品分类名称',
+  `order_sn` varchar(64) NOT NULL COMMENT '订单编号',
+  `product_id` bigint(20) NOT NULL COMMENT '商品id',
+  `product_name` varchar(200) NOT NULL COMMENT '商品名称',
+  `product_price` decimal(10,2) NOT NULL COMMENT '销售价格',
+  `product_quantity` int(11) NOT NULL COMMENT '购买数量',
+  `product_category_id` bigint(20) NOT NULL COMMENT '商品分类id',
+  `product_category_name` varchar(500) NOT NULL COMMENT '商品分类名称',
   `merchant_id` bigint(20) NOT NULL COMMENT '所属商家',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订单中所包含的商品';
