@@ -31,7 +31,6 @@ CREATE TABLE `product_catagory` (
 
 DROP TABLE IF EXISTS `order_main`;
 CREATE TABLE `order_main` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单id',
   `order_sn` varchar(64) DEFAULT NULL COMMENT '订单编号',
   `create_time` datetime DEFAULT NULL COMMENT '提交时间',
   `member_username` varchar(64) DEFAULT NULL COMMENT '用户帐号',
