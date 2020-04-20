@@ -37,8 +37,8 @@ CREATE TABLE `order_main` (
   `total_amount` decimal(10,2) NOT NULL COMMENT '订单总金额',
   `pay_amount` decimal(10,2) NOT NULL COMMENT '应付金额（实际支付金额）',
   `freight_amount` decimal(10,2) DEFAULT NULL COMMENT '运费金额',
-  `pay_type` int(1) DEFAULT NULL COMMENT '支付方式：0->未支付；1->支付宝；2->微信',
-  `status` int(1) DEFAULT NULL COMMENT '订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
+  `pay_type` int(1) NOT NULL DEFAULT '0' COMMENT '支付方式：0->未支付；1->支付宝；2->微信; 3->货到付款',
+  `status` int(1) NOT NULL DEFAULT '0' COMMENT '订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单',
   `delivery_company` varchar(64) DEFAULT NULL COMMENT '物流公司(配送方式)',
   `delivery_sn` varchar(64) DEFAULT NULL COMMENT '物流单号',
   `receiver_name` varchar(100) DEFAULT NULL COMMENT '收货人姓名',
@@ -55,8 +55,7 @@ CREATE TABLE `order_main` (
   `delivery_time` datetime DEFAULT NULL COMMENT '发货时间',
   `receive_time` datetime DEFAULT NULL COMMENT '确认收货时间',
   `modify_time` datetime DEFAULT NULL COMMENT '修改时间',
-  `merchant_id` bigint(20) NOT NULL COMMENT '所属商家',
-  PRIMARY KEY (`id`)
+  `merchant_id` bigint(20) NOT NULL COMMENT '所属商家'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 DROP TABLE IF EXISTS `order_item`;
