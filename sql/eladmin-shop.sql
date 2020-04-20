@@ -49,7 +49,7 @@ CREATE TABLE `order_main` (
   `receiver_region` varchar(32) DEFAULT NULL COMMENT '区',
   `receiver_detail_address` varchar(200) DEFAULT NULL COMMENT '详细地址',
   `note` varchar(500) DEFAULT NULL COMMENT '订单备注',
-  `confirm_status` int(1) DEFAULT NULL COMMENT '确认收货状态：0->未确认；1->已确认',
+  `confirm_status` int(1) NOT NULL DEFAULT '0' COMMENT '确认收货状态：0->未确认；1->已确认',
   `delete_status` int(1) NOT NULL DEFAULT '0' COMMENT '删除状态：0->未删除；1->已删除',
   `payment_time` datetime DEFAULT NULL COMMENT '支付时间',
   `delivery_time` datetime DEFAULT NULL COMMENT '发货时间',
