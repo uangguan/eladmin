@@ -8,6 +8,6 @@ VALUES
 INSERT INTO `order_item` (`id`, `order_id`, `product_id`, `product_name`, `product_price`, `product_quantity`, `product_category_id`, `product_category_name`, `merchant_id`)
 VALUES
 	(1, 1, 1, 'mac', 10.00, 1, 5, 'amc', 14),
-    (1, 1, 1, 'mac', 10.00, 1, 5, 'amc', 14),
-	(1, 1, 1, 'mac', 10.00, 1, 5, 'amc', 14),
+    (2, 1, 1, 'mac', 10.00, 1, 5, 'amc', 14),
+	(3, 1, 1, 'mac', 10.00, 1, 5, 'amc', 14),
 
