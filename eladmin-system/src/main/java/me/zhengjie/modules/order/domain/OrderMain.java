@@ -4,14 +4,17 @@ import lombok.Data;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.validation.constraints.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import me.zhengjie.modules.system.domain.Dept;
+import me.zhengjie.modules.system.domain.DictDetail;
 import org.hibernate.annotations.*;
 import java.sql.Timestamp;
 import java.math.BigDecimal;
 import java.io.Serializable;
+import java.util.List;
 
 /**
 * @author hgw
@@ -20,6 +23,13 @@ import java.io.Serializable;
 @Data
 @Table(name="order_main")
 public class OrderMain implements Serializable {
+
+    /** 订单id */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
 
     /** 订单编号 */
     @Column(name = "order_sn",nullable = false)
@@ -133,11 +143,8 @@ public class OrderMain implements Serializable {
     @JoinColumn(name = "merchant_id")
     private Dept dept;
 
-    /** 订单id */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @OneToMany(mappedBy = "orderMain",cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    private List<OrderItem> orderItems;
 
     public void copy(OrderMain source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

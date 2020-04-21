@@ -118,7 +118,7 @@ public class OrderMainServiceImpl implements OrderMainService {
             map.put("发货时间", orderMain.getDeliveryTime());
             map.put("确认收货时间", orderMain.getReceiveTime());
             map.put("修改时间", orderMain.getModifyTime());
-            map.put("所属商家", orderMain.getMerchantId());
+            map.put("所属商家", orderMain.getDept().getName());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);

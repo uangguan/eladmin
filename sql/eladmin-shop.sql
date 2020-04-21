@@ -63,7 +63,7 @@ CREATE TABLE `order_main` (
 DROP TABLE IF EXISTS `order_item`;
 CREATE TABLE `order_item` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `order_sn` varchar(64) NOT NULL COMMENT '订单编号',
+  `order_id` bigint(64) NOT NULL COMMENT '订单id',
   `product_id` bigint(20) NOT NULL COMMENT '商品id',
   `product_name` varchar(200) NOT NULL COMMENT '商品名称',
   `product_price` decimal(10,2) NOT NULL COMMENT '销售价格',

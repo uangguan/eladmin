@@ -94,14 +94,14 @@ public class OrderItemServiceImpl implements OrderItemService {
         List<Map<String, Object>> list = new ArrayList<>();
         for (OrderItemDto orderItem : all) {
             Map<String,Object> map = new LinkedHashMap<>();
-            map.put("订单编号", orderItem.getOrderSn());
+            map.put("订单编号", orderItem.getOrderMainDto().getOrderSn());
             map.put("商品id", orderItem.getProductId());
             map.put("商品名称", orderItem.getProductName());
             map.put("销售价格", orderItem.getProductPrice());
             map.put("购买数量", orderItem.getProductQuantity());
             map.put("商品分类id", orderItem.getProductCategoryId());
             map.put("商品分类名称", orderItem.getProductCategoryName());
-            map.put("所属商家", orderItem.getMerchantId());
+            map.put("所属商家", orderItem.getDept().getName());
             list.add(map);
         }
         FileUtil.downloadExcel(list, response);

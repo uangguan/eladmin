@@ -1,9 +1,14 @@
 package me.zhengjie.modules.order.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import me.zhengjie.modules.product.service.dto.ProductCatagoryDto;
+import me.zhengjie.modules.system.service.dto.DeptSmallDto;
+
 import java.sql.Timestamp;
 import java.math.BigDecimal;
 import java.io.Serializable;
+import java.util.List;
 
 /**
 * @author hgw
@@ -84,7 +89,10 @@ public class OrderMainDto implements Serializable {
     private Timestamp modifyTime;
 
     /** 所属商家 */
-    private Long merchantId;
+    private DeptSmallDto dept;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    private List<OrderItemDto> orderItems;
 
     /** 订单id */
     private Long id;

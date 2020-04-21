@@ -1,6 +1,8 @@
 package me.zhengjie.modules.order.service.dto;
 
 import lombok.Data;
+import me.zhengjie.modules.system.service.dto.DeptSmallDto;
+
 import java.math.BigDecimal;
 import java.io.Serializable;
 
@@ -12,8 +14,7 @@ public class OrderItemDto implements Serializable {
 
     private Long id;
 
-    /** 订单编号 */
-    private String orderSn;
+    private OrderMainDto orderMainDto;
 
     /** 商品id */
     private Long productId;
@@ -34,5 +35,5 @@ public class OrderItemDto implements Serializable {
     private String productCategoryName;
 
     /** 所属商家 */
-    private Long merchantId;
+    private DeptSmallDto dept;
 }

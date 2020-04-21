@@ -3,6 +3,9 @@ package me.zhengjie.modules.order.domain;
 import lombok.Data;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
+import me.zhengjie.modules.system.domain.Dept;
+import me.zhengjie.modules.system.domain.Dict;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
@@ -20,11 +23,6 @@ public class OrderItem implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    /** 订单编号 */
-    @Column(name = "order_sn",nullable = false)
-    @NotBlank
-    private String orderSn;
 
     /** 商品id */
     @Column(name = "product_id",nullable = false)
@@ -57,9 +55,13 @@ public class OrderItem implements Serializable {
     private String productCategoryName;
 
     /** 所属商家 */
-    @Column(name = "merchant_id",nullable = false)
-    @NotNull
-    private Long merchantId;
+    @OneToOne
+    @JoinColumn(name = "merchant_id")
+    private Dept dept;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private OrderMain orderMain;
 
     public void copy(OrderItem source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
