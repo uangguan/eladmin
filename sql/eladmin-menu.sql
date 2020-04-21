@@ -19,6 +19,6 @@ INSERT INTO `menu` (`id`, `i_frame`, `name`, `component`, `pid`, `sort`, `icon`,
 VALUES
 	(126, 0, '订单模块', '', 0, 1, 'menu', 'order', 0, 0, NULL, '2020-03-29 16:22:03', NULL, 0),
 	(127, 0, '订单管理', 'order/order/index', 126, 999, 'menu', 'order', 0, 0, NULL, '2020-03-29 16:23:57', NULL, 1);
-INSERT INTO `menu` VALUES (128, b'0', '订单编辑', '', 127, 1, '', '', b'0', b'0', '', '2020-03-29 11:00:08', 'product:edit', 2);
-INSERT INTO `menu` VALUES (129, b'0', '订单删除', '', 127, 2, '', '', b'0', b'0', '', '2020-03-29 11:00:23', 'product:del', 2);
-INSERT INTO `menu` VALUES (130, b'0', '订单查询', '', 127, 3, '', '', b'0', b'0', '', '2020-03-29 11:00:23', 'product:list', 2);
+INSERT INTO `menu` VALUES (128, b'0', '订单编辑', '', 127, 1, '', '', b'0', b'0', '', '2020-03-29 11:00:08', 'orderMain:edit', 2);
+INSERT INTO `menu` VALUES (129, b'0', '订单删除', '', 127, 2, '', '', b'0', b'0', '', '2020-03-29 11:00:23', 'orderMain:del', 2);
+INSERT INTO `menu` VALUES (130, b'0', '订单查询', '', 127, 3, '', '', b'0', b'0', '', '2020-03-29 11:00:23', 'orderMain:list', 2);
