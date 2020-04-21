@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import me.zhengjie.modules.system.domain.Dept;
 import org.hibernate.annotations.*;
 import java.sql.Timestamp;
 import java.math.BigDecimal;
@@ -128,9 +129,9 @@ public class OrderMain implements Serializable {
     private Timestamp modifyTime;
 
     /** 所属商家 */
-    @Column(name = "merchant_id",nullable = false)
-    @NotNull
-    private Long merchantId;
+    @OneToOne
+    @JoinColumn(name = "merchant_id")
+    private Dept dept;
 
     /** 订单id */
     @Id
