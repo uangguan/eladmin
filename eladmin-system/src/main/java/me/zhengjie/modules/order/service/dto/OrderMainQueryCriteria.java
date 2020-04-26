@@ -14,7 +14,7 @@ public class OrderMainQueryCriteria{
 
     /** 精确 */
     @Query
-    private String orderId;
+    private String orderSn;
 
     @Query(propName = "id", type = Query.Type.IN, joinName = "dept")
     private Set<Long> deptIds;
