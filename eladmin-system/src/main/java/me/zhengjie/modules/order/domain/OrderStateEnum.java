@@ -12,7 +12,11 @@ public enum OrderStateEnum {
     //已发货(待收货）
     Sended("3"),
     //已完成
-    Closed("4");
+    Closed("4"),
+    //超时取消
+    TimeOutCancled("5"),
+    //用户取消
+    UseCancled("6");
 
     private String value;
 

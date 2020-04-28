@@ -15,11 +15,16 @@ public class OrderCreatedState implements OrderState {
 
     @Override
     public void selectPayType() {
-
+        stateMachine.setCurrentState(new OrderUnPayState(stateMachine));
     }
 
     @Override
-    public void cancleOrder() {
+    public void userCancleOrder() {
+        stateMachine.setCurrentState(new OrderUserCancledState(stateMachine));
+    }
 
+    @Override
+    public void timeOutCancleOrder() {
+        stateMachine.setCurrentState(new OrderTimeOutCancledState(stateMachine));
     }
 }

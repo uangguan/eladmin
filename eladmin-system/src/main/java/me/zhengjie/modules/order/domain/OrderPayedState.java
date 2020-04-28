@@ -14,36 +14,12 @@ public class OrderPayedState implements OrderState {
     }
 
     @Override
-    public void createOrder() {
-    }
-
-    @Override
-    public void selectPayType() {
-
-    }
-
-    @Override
-    public void payReturn() {
-
-    }
-
-    @Override
-    public void cancleOrder() {
-
+    public void userCancleOrder() {
+        stateMachine.setCurrentState(new OrderUserCancledState(stateMachine));
     }
 
     @Override
     public void sendOrder() {
-
-    }
-
-    @Override
-    public void confirmOrder() {
-
-    }
-
-    @Override
-    public void returnOrder() {
 
     }
 }

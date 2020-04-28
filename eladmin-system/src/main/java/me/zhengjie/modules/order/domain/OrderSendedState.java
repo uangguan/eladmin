@@ -13,24 +13,10 @@ public class OrderSendedState implements OrderState {
         return OrderStateEnum.Sended;
     }
 
-
-    @Override
-    public void cancleOrder() {
-
-    }
-
-    @Override
-    public void sendOrder() {
-
-    }
-
     @Override
     public void confirmOrder() {
 
     }
 
-    @Override
-    public void returnOrder() {
 
-    }
 }

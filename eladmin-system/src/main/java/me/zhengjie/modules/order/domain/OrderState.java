@@ -24,8 +24,13 @@ public interface OrderState {
 
     }
 
-    //超时/用户取消
-    public default void cancleOrder() {
+    //超时取消
+    public default void timeOutCancleOrder() {
+
+    }
+
+    //用户取消
+    public default void userCancleOrder() {
 
     }
 

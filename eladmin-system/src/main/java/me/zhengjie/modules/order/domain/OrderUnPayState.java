@@ -19,7 +19,12 @@ public class OrderUnPayState implements OrderState {
     }
 
     @Override
-    public void cancleOrder() {
+    public void userCancleOrder() {
+        stateMachine.setCurrentState(new OrderUserCancledState(stateMachine));
+    }
 
+    @Override
+    public void timeOutCancleOrder() {
+        stateMachine.setCurrentState(new OrderTimeOutCancledState(stateMachine));
     }
 }

@@ -1,16 +1,16 @@
 package me.zhengjie.modules.order.domain;
 
-public class OrderClosedState implements OrderState {
+public class OrderTimeOutCancledState implements OrderState {
 
     private OrderStateMachine stateMachine;
 
-    public OrderClosedState(OrderStateMachine stateMachine) {
+    public OrderTimeOutCancledState(OrderStateMachine stateMachine) {
         this.stateMachine = stateMachine;
     }
 
     @Override
     public OrderStateEnum getName() {
-        return OrderStateEnum.Closed;
+            return OrderStateEnum.TimeOutCancled;
     }
 
 }
