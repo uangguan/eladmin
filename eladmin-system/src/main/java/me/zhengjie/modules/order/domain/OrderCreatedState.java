@@ -27,4 +27,9 @@ public class OrderCreatedState implements OrderState {
     public void timeOutCancleOrder() {
         stateMachine.setCurrentState(new OrderTimeOutCancledState(stateMachine));
     }
+
+    @Override
+    public void arrivePayOrder() {
+        stateMachine.setCurrentState(new OrderPayedState(stateMachine));
+    }
 }

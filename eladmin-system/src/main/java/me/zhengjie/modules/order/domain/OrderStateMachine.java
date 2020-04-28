@@ -31,8 +31,12 @@ public class OrderStateMachine {
         currentState.payReturn();
     }
 
-    public void cancleOrder() {
-        currentState.cancleOrder();
+    public void userCancleOrder() {
+        currentState.userCancleOrder();
+    }
+
+    public void timeOutCancleOrder() {
+        currentState.timeOutCancleOrder();
     }
 
     public void sendOrder() {

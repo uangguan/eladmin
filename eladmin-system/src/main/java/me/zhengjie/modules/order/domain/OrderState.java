@@ -19,6 +19,11 @@ public interface OrderState {
 
     }
 
+    //货到付款
+    public default void arrivePayOrder() {
+
+    }
+
     //支付回调
     public default void payReturn() {
 
