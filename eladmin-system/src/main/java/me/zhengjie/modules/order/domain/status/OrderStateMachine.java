@@ -12,8 +12,9 @@ public class OrderStateMachine {
     private OrderState currentState;
     private OrderMain orderMain;
 
-    public OrderStateMachine(OrderState currentState) {
-        this.currentState = new OrderCreatedState(this);
+    public OrderStateMachine(OrderMain orderMain) {
+        this.orderMain = orderMain;
+        this.currentState = new OrderInitState(this);
     }
 
     public void checkOrder() {
@@ -50,5 +51,10 @@ public class OrderStateMachine {
 
     public void returnOrder() {
         currentState.returnOrder();
+    }
+
+    public void setCurrentState(OrderState currentState) {
+        this.currentState = currentState;
+        this.orderMain.setStatus(Integer.valueOf(currentState.getName().toString()));
     }
 }

@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.validation.constraints.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import me.zhengjie.modules.order.domain.status.OrderStateMachine;
 import me.zhengjie.modules.system.domain.Dept;
 import me.zhengjie.modules.system.domain.DictDetail;
 import org.hibernate.annotations.*;
@@ -145,6 +146,9 @@ public class OrderMain implements Serializable {
 
     @OneToMany(mappedBy = "orderMain",cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<OrderItem> orderItems;
+
+    @Transient
+    private OrderStateMachine orderStateMachine = new OrderStateMachine(this);
 
     public void copy(OrderMain source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
