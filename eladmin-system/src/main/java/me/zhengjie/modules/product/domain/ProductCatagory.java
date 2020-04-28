@@ -7,6 +7,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import me.zhengjie.modules.system.domain.Dept;
 import org.hibernate.annotations.*;
 import java.sql.Timestamp;
 import java.io.Serializable;
@@ -47,9 +49,9 @@ public class ProductCatagory implements Serializable {
     private Timestamp createTime;
 
     /** 所属商家 */
-    @Column(name = "merchant_id",nullable = false)
-    @NotNull
-    private Long merchantId;
+    @OneToOne
+    @JoinColumn(name = "merchant_id")
+    private Dept dept;
 
     public void copy(ProductCatagory source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));

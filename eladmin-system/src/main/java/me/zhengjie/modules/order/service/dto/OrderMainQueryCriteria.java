@@ -1,4 +1,4 @@
-package me.zhengjie.modules.product.service.dto;
+package me.zhengjie.modules.order.service.dto;
 
 import lombok.Data;
 import java.util.List;
@@ -10,15 +10,11 @@ import me.zhengjie.annotation.Query;
 * @author hgw
 */
 @Data
-public class ProductQueryCriteria{
+public class OrderMainQueryCriteria{
 
     /** 精确 */
     @Query
-    private Long id;
-
-    /** 模糊 */
-    @Query(type = Query.Type.INNER_LIKE)
-    private String name;
+    private String orderSn;
 
     @Query(propName = "id", type = Query.Type.IN, joinName = "dept")
     private Set<Long> deptIds;

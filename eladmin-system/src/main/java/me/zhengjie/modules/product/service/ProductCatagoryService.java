@@ -63,4 +63,11 @@ public interface ProductCatagoryService {
     * @throws IOException /
     */
     void download(List<ProductCatagoryDto> all, HttpServletResponse response) throws IOException;
+
+    /**
+     * 查询商品类别树
+     * @param productCatagoryDtos
+     * @return
+     */
+    Object buildTree(List<ProductCatagoryDto> productCatagoryDtos);
 }

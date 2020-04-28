@@ -22,7 +22,7 @@ import java.io.Serializable;
 
 /**
 * @author ${author}
-* @date ${date}
+<#--* @date ${date}-->
 */
 @Entity
 @Data
@@ -51,7 +51,7 @@ public class ${className} implements Serializable {
     <#if column.dateAnnotation??>
     <#if column.dateAnnotation = 'CreationTimestamp'>
     @CreationTimestamp
-    <#else>
+    <#elseif  column.dateAnnotation = 'UpdateTimestamp'>
     @UpdateTimestamp
     </#if>
     </#if>

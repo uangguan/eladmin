@@ -1,10 +1,10 @@
-package me.zhengjie.modules.product.rest;
+package me.zhengjie.modules.order.rest;
 
 import me.zhengjie.aop.log.Log;
 import me.zhengjie.config.DataScope;
-import me.zhengjie.modules.product.domain.Product;
-import me.zhengjie.modules.product.service.ProductService;
-import me.zhengjie.modules.product.service.dto.ProductQueryCriteria;
+import me.zhengjie.modules.order.domain.OrderMain;
+import me.zhengjie.modules.order.service.OrderMainService;
+import me.zhengjie.modules.order.service.dto.OrderMainQueryCriteria;
 import me.zhengjie.modules.system.service.DeptService;
 import me.zhengjie.utils.PageUtil;
 import org.springframework.data.domain.Pageable;
@@ -24,36 +24,35 @@ import javax.servlet.http.HttpServletResponse;
 /**
 * @author hgw
 */
-@Api(tags = "商品管理管理")
+@Api(tags = "订单管理管理")
 @RestController
-@RequestMapping("/api/product")
-public class ProductController {
+@RequestMapping("/api/orderMain")
+public class OrderMainController {
 
-    private final ProductService productService;
-
-    private final DataScope dataScope;
+    private final OrderMainService orderMainService;
     private final DeptService deptService;
+    private final DataScope dataScope;
 
-    public ProductController(ProductService productService, DataScope dataScope, DeptService deptService) {
-        this.productService = productService;
-        this.dataScope = dataScope;
+
+    public OrderMainController(OrderMainService orderMainService, DeptService deptService, DataScope dataScope) {
+        this.orderMainService = orderMainService;
         this.deptService = deptService;
+        this.dataScope = dataScope;
     }
 
     @Log("导出数据")
     @ApiOperation("导出数据")
     @GetMapping(value = "/download")
-    @PreAuthorize("@el.check('product:list')")
-    public void download(HttpServletResponse response, ProductQueryCriteria criteria) throws IOException {
-        productService.download(productService.queryAll(criteria), response);
+    @PreAuthorize("@el.check('orderMain:list')")
+    public void download(HttpServletResponse response, OrderMainQueryCriteria criteria) throws IOException {
+        orderMainService.download(orderMainService.queryAll(criteria), response);
     }
 
     @GetMapping
-    @Log("查询商品管理")
-    @ApiOperation("查询商品管理")
-    @PreAuthorize("@el.check('product:list')")
-    public ResponseEntity<Object> getProducts(ProductQueryCriteria criteria, Pageable pageable){
-
+    @Log("查询订单管理")
+    @ApiOperation("查询订单管理")
+    @PreAuthorize("@el.check('orderMain:list')")
+    public ResponseEntity<Object> getOrderMains(OrderMainQueryCriteria criteria, Pageable pageable){
         Set<Long> deptSet = new HashSet<>();
         Set<Long> result = new HashSet<>();
         if (!ObjectUtils.isEmpty(criteria.getDeptId())) {
@@ -72,40 +71,40 @@ public class ProductController {
             if(result.size() == 0){
                 return new ResponseEntity<>(PageUtil.toPage(null,0),HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(productService.queryAll(criteria,pageable),HttpStatus.OK);
+                return new ResponseEntity<>(orderMainService.queryAll(criteria,pageable),HttpStatus.OK);
             }
             // 否则取并集
         } else {
             result.addAll(deptSet);
             result.addAll(deptIds);
             criteria.setDeptIds(result);
-            return new ResponseEntity<>(productService.queryAll(criteria,pageable),HttpStatus.OK);
+            return new ResponseEntity<>(orderMainService.queryAll(criteria,pageable),HttpStatus.OK);
         }
     }
 
     @PostMapping
-    @Log("新增商品管理")
-    @ApiOperation("新增商品管理")
-    @PreAuthorize("@el.check('product:add')")
-    public ResponseEntity<Object> create(@Validated @RequestBody Product resources){
-        return new ResponseEntity<>(productService.create(resources),HttpStatus.CREATED);
+    @Log("新增订单管理")
+    @ApiOperation("新增订单管理")
+    @PreAuthorize("@el.check('orderMain:add')")
+    public ResponseEntity<Object> create(@Validated @RequestBody OrderMain resources){
+        return new ResponseEntity<>(orderMainService.create(resources),HttpStatus.CREATED);
     }
 
     @PutMapping
-    @Log("修改商品管理")
-    @ApiOperation("修改商品管理")
-    @PreAuthorize("@el.check('product:edit')")
-    public ResponseEntity<Object> update(@Validated @RequestBody Product resources){
-        productService.update(resources);
+    @Log("修改订单管理")
+    @ApiOperation("修改订单管理")
+    @PreAuthorize("@el.check('orderMain:edit')")
+    public ResponseEntity<Object> update(@Validated @RequestBody OrderMain resources){
+        orderMainService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @Log("删除商品管理")
-    @ApiOperation("删除商品管理")
-    @PreAuthorize("@el.check('product:del')")
+    @Log("删除订单管理")
+    @ApiOperation("删除订单管理")
+    @PreAuthorize("@el.check('orderMain:del')")
     @DeleteMapping
     public ResponseEntity<Object> deleteAll(@RequestBody Long[] ids) {
-        productService.deleteAll(ids);
+        orderMainService.deleteAll(ids);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

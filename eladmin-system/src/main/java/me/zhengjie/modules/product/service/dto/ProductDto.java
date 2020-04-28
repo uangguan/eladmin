@@ -1,12 +1,13 @@
 package me.zhengjie.modules.product.service.dto;
 
 import lombok.Data;
+import me.zhengjie.modules.system.service.dto.DeptSmallDto;
+
 import java.sql.Timestamp;
 import java.io.Serializable;
 
 /**
 * @author hgw
-* @date 2020-04-11
 */
 @Data
 public class ProductDto implements Serializable {
@@ -24,7 +25,7 @@ public class ProductDto implements Serializable {
     private String specification;
 
     /** 所属分类 */
-    private Long categoryId;
+    private ProductCatagorySmallDto productCatagory;
 
     /** 库存 */
     private Long count;
@@ -35,12 +36,12 @@ public class ProductDto implements Serializable {
     /** 活动价 */
     private Double activityPrice;
 
-    /** 所属商家 */
-    private Long merchantId;
-
     /** 状态 */
     private Boolean enabled;
 
     /** 创建日期 */
     private Timestamp createTime;
+
+    /** 所属商家 */
+    private DeptSmallDto dept;
 }

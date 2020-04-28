@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
 * @author ${author}
-* @date ${date}
+<#--* @date ${date}-->
 */
 public interface ${className}Service {
 

@@ -8,7 +8,6 @@ import org.mapstruct.ReportingPolicy;
 
 /**
 * @author hgw
-* @date 2020-04-11
 */
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper extends BaseMapper<ProductDto, Product> {

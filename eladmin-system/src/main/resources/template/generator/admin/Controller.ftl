@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
 * @author ${author}
-* @date ${date}
+<#--* @date ${date}-->
 */
 @Api(tags = "${apiAlias}管理")
 @RestController
