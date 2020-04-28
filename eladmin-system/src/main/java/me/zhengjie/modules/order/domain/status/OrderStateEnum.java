@@ -1,4 +1,4 @@
-package me.zhengjie.modules.order.domain;
+package me.zhengjie.modules.order.domain.status;
 
 public enum OrderStateEnum {
     //初始化(订单未校验库存）

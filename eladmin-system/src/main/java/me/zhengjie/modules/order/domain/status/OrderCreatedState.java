@@ -1,21 +1,21 @@
-package me.zhengjie.modules.order.domain;
+package me.zhengjie.modules.order.domain.status;
 
-public class OrderUnPayState implements OrderState {
+public class OrderCreatedState implements OrderState {
 
     private OrderStateMachine stateMachine;
 
-    public OrderUnPayState(OrderStateMachine stateMachine) {
+    public OrderCreatedState(OrderStateMachine stateMachine) {
         this.stateMachine = stateMachine;
     }
 
     @Override
     public OrderStateEnum getName() {
-        return OrderStateEnum.UnPay;
+            return OrderStateEnum.Created;
     }
 
     @Override
-    public void payReturn() {
-
+    public void selectPayType() {
+        stateMachine.setCurrentState(new OrderUnPayState(stateMachine));
     }
 
     @Override
@@ -26,5 +26,10 @@ public class OrderUnPayState implements OrderState {
     @Override
     public void timeOutCancleOrder() {
         stateMachine.setCurrentState(new OrderTimeOutCancledState(stateMachine));
+    }
+
+    @Override
+    public void arrivePayOrder() {
+        stateMachine.setCurrentState(new OrderPayedState(stateMachine));
     }
 }

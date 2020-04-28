@@ -1,6 +1,7 @@
-package me.zhengjie.modules.order.domain;
+package me.zhengjie.modules.order.domain.status;
 
 import lombok.Data;
+import me.zhengjie.modules.order.domain.OrderMain;
 
 /***
  * 状态模式，观察者模式

@@ -1,4 +1,4 @@
-package me.zhengjie.modules.order.domain;
+package me.zhengjie.modules.order.domain.status;
 
 public interface OrderState {
 
