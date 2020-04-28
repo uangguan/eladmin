@@ -4,24 +4,43 @@ public interface OrderState {
 
     OrderStateEnum getName();
 
+    //订单库存校验
+    public default void checkOrder() {
+
+    }
+
     //订单创建
-    public void createOrder();
+    public default void createOrder() {
+
+    }
 
     //选择支付方式
-    public void selectPayType();
+    public default void selectPayType() {
+
+    }
 
     //支付回调
-    public void payReturn();
+    public default void payReturn() {
+
+    }
 
     //超时/用户取消
-    public void cancleOrder();
+    public default void cancleOrder() {
+
+    }
 
     //发货
-    public void sendOrder();
+    public default void sendOrder() {
+
+    }
 
     //确认收货
-    public void confirmOrder();
+    public default void confirmOrder() {
+
+    }
 
     //退货
-    public void returnOrder();
+    public default void returnOrder() {
+
+    }
 }

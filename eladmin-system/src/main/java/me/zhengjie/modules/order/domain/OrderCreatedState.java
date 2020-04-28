@@ -10,11 +10,7 @@ public class OrderCreatedState implements OrderState {
 
     @Override
     public OrderStateEnum getName() {
-        return OrderStateEnum.Created;
-    }
-
-    @Override
-    public void createOrder() {
+            return OrderStateEnum.Created;
     }
 
     @Override
@@ -23,27 +19,7 @@ public class OrderCreatedState implements OrderState {
     }
 
     @Override
-    public void payReturn() {
-
-    }
-
-    @Override
     public void cancleOrder() {
-
-    }
-
-    @Override
-    public void sendOrder() {
-
-    }
-
-    @Override
-    public void confirmOrder() {
-
-    }
-
-    @Override
-    public void returnOrder() {
 
     }
 }

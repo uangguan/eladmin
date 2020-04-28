@@ -149,4 +149,8 @@ public class OrderMain implements Serializable {
     public void copy(OrderMain source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
     }
+
+    public boolean checkInventory() {
+        return true;
+    }
 }

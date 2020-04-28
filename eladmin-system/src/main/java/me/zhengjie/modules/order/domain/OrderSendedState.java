@@ -13,19 +13,6 @@ public class OrderSendedState implements OrderState {
         return OrderStateEnum.Sended;
     }
 
-    @Override
-    public void createOrder() {
-    }
-
-    @Override
-    public void selectPayType() {
-
-    }
-
-    @Override
-    public void payReturn() {
-
-    }
 
     @Override
     public void cancleOrder() {

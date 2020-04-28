@@ -1,6 +1,8 @@
 package me.zhengjie.modules.order.domain;
 
 public enum OrderStateEnum {
+    //初始化(订单未校验库存）
+    Init("-1"),
     //已创建
     Created("0"),
     //未支付(待支付)

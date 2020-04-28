@@ -14,36 +14,12 @@ public class OrderUnPayState implements OrderState {
     }
 
     @Override
-    public void createOrder() {
-    }
-
-    @Override
-    public void selectPayType() {
-
-    }
-
-    @Override
     public void payReturn() {
 
     }
 
     @Override
     public void cancleOrder() {
-
-    }
-
-    @Override
-    public void sendOrder() {
-
-    }
-
-    @Override
-    public void confirmOrder() {
-
-    }
-
-    @Override
-    public void returnOrder() {
 
     }
 }
