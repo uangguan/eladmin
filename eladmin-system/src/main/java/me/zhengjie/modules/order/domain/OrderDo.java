@@ -1,16 +1,10 @@
 package me.zhengjie.modules.order.domain;
 
 import lombok.Data;
-import me.zhengjie.modules.order.domain.status.OrderInitState;
+import me.zhengjie.modules.order.domain.status.OrderInitedState;
 import me.zhengjie.modules.order.domain.status.OrderState;
-import me.zhengjie.modules.order.repository.OrderItemPo;
 import me.zhengjie.modules.system.domain.Dept;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -24,7 +18,7 @@ public class OrderDo {
     private OrderState currentState;
 
     public OrderDo() {
-        this.currentState = new OrderInitState(this);
+        this.currentState = new OrderInitedState(this);
     }
 
     public void checkOrder() {
