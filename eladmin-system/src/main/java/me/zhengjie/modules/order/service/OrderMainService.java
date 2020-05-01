@@ -1,6 +1,6 @@
 package me.zhengjie.modules.order.service;
 
-import me.zhengjie.modules.order.domain.OrderMain;
+import me.zhengjie.modules.order.repository.OrderMainPo;
 import me.zhengjie.modules.order.service.dto.OrderMainDto;
 import me.zhengjie.modules.order.service.dto.OrderMainQueryCriteria;
 import org.springframework.data.domain.Pageable;
@@ -41,13 +41,13 @@ public interface OrderMainService {
     * @param resources /
     * @return OrderMainDto
     */
-    OrderMainDto create(OrderMain resources);
+    OrderMainDto create(OrderMainPo resources);
 
     /**
     * 编辑
     * @param resources /
     */
-    void update(OrderMain resources);
+    void update(OrderMainPo resources);
 
     /**
     * 多选删除

@@ -1,11 +1,13 @@
 package me.zhengjie.modules.order.domain.status;
 
+import me.zhengjie.modules.order.domain.OrderDo;
+
 public class OrderClosedState implements OrderState {
 
-    private OrderStateMachine stateMachine;
+    private OrderDo orderDo;
 
-    public OrderClosedState(OrderStateMachine stateMachine) {
-        this.stateMachine = stateMachine;
+    public OrderClosedState(OrderDo stateMachine) {
+        this.orderDo = orderDo;
     }
 
     @Override

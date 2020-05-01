@@ -1,11 +1,13 @@
 package me.zhengjie.modules.order.domain.status;
 
+import me.zhengjie.modules.order.domain.OrderDo;
+
 public class OrderInitState implements OrderState {
 
-    private OrderStateMachine stateMachine;
+    private OrderDo orderDo;
 
-    public OrderInitState(OrderStateMachine stateMachine) {
-        this.stateMachine = stateMachine;
+    public OrderInitState(OrderDo orderDo) {
+        this.orderDo = orderDo;
     }
 
     @Override
@@ -15,9 +17,9 @@ public class OrderInitState implements OrderState {
 
     @Override
     public void checkOrder() {
-        boolean hasInventory = stateMachine.getOrderMain().checkInventory();
+        boolean hasInventory = true;
         if (hasInventory) {
-            stateMachine.setCurrentState(new OrderCreatedState(stateMachine));
+            orderDo.setCurrentState(new OrderCreatedState(orderDo));
         }
     }
 }

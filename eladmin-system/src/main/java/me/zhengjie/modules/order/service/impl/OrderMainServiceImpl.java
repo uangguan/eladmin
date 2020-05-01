@@ -1,6 +1,6 @@
 package me.zhengjie.modules.order.service.impl;
 
-import me.zhengjie.modules.order.domain.OrderMain;
+import me.zhengjie.modules.order.repository.OrderMainPo;
 import me.zhengjie.utils.ValidationUtil;
 import me.zhengjie.utils.FileUtil;
 import me.zhengjie.modules.order.repository.OrderMainRepository;
@@ -46,7 +46,7 @@ public class OrderMainServiceImpl implements OrderMainService {
     @Override
     //@Cacheable
     public Map<String,Object> queryAll(OrderMainQueryCriteria criteria, Pageable pageable){
-        Page<OrderMain> page = orderMainRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
+        Page<OrderMainPo> page = orderMainRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root,criteria,criteriaBuilder),pageable);
         return PageUtil.toPage(page.map(orderMainMapper::toDto));
     }
 
@@ -59,26 +59,26 @@ public class OrderMainServiceImpl implements OrderMainService {
     @Override
     //@Cacheable(key = "#p0")
     public OrderMainDto findById(Long id) {
-        OrderMain orderMain = orderMainRepository.findById(id).orElseGet(OrderMain::new);
-        ValidationUtil.isNull(orderMain.getId(),"OrderMain","id",id);
-        return orderMainMapper.toDto(orderMain);
+        OrderMainPo orderMainPo = orderMainRepository.findById(id).orElseGet(OrderMainPo::new);
+        ValidationUtil.isNull(orderMainPo.getId(),"OrderMain","id",id);
+        return orderMainMapper.toDto(orderMainPo);
     }
 
     @Override
     //@CacheEvict(allEntries = true)
     @Transactional(rollbackFor = Exception.class)
-    public OrderMainDto create(OrderMain resources) {
+    public OrderMainDto create(OrderMainPo resources) {
         return orderMainMapper.toDto(orderMainRepository.save(resources));
     }
 
     @Override
     //@CacheEvict(allEntries = true)
     @Transactional(rollbackFor = Exception.class)
-    public void update(OrderMain resources) {
-        OrderMain orderMain = orderMainRepository.findById(resources.getId()).orElseGet(OrderMain::new);
-        ValidationUtil.isNull( orderMain.getId(),"OrderMain","id",resources.getId());
-        orderMain.copy(resources);
-        orderMainRepository.save(orderMain);
+    public void update(OrderMainPo resources) {
+        OrderMainPo orderMainPo = orderMainRepository.findById(resources.getId()).orElseGet(OrderMainPo::new);
+        ValidationUtil.isNull( orderMainPo.getId(),"OrderMain","id",resources.getId());
+        orderMainPo.copy(resources);
+        orderMainRepository.save(orderMainPo);
     }
 
     @Override

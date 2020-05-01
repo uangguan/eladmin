@@ -1,4 +1,4 @@
-package me.zhengjie.modules.order.domain;
+package me.zhengjie.modules.order.repository;
 
 import lombok.Data;
 import cn.hutool.core.bean.BeanUtil;
@@ -8,9 +8,8 @@ import javax.persistence.CascadeType;
 import javax.validation.constraints.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import me.zhengjie.modules.order.domain.status.OrderStateMachine;
+
 import me.zhengjie.modules.system.domain.Dept;
-import me.zhengjie.modules.system.domain.DictDetail;
 import org.hibernate.annotations.*;
 import java.sql.Timestamp;
 import java.math.BigDecimal;
@@ -23,7 +22,7 @@ import java.util.List;
 @Entity
 @Data
 @Table(name="order_main")
-public class OrderMain implements Serializable {
+public class OrderMainPo implements Serializable {
 
     /** 订单id */
     @Id
@@ -145,12 +144,9 @@ public class OrderMain implements Serializable {
     private Dept dept;
 
     @OneToMany(mappedBy = "orderMain",cascade={CascadeType.PERSIST,CascadeType.REMOVE})
-    private List<OrderItem> orderItems;
+    private List<OrderItemPo> orderItemPos;
 
-    @Transient
-    private OrderStateMachine orderStateMachine = new OrderStateMachine(this);
-
-    public void copy(OrderMain source){
+    public void copy(OrderMainPo source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
     }
 

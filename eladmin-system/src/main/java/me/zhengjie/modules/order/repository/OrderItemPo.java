@@ -1,10 +1,9 @@
-package me.zhengjie.modules.order.domain;
+package me.zhengjie.modules.order.repository;
 
 import lombok.Data;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import me.zhengjie.modules.system.domain.Dept;
-import me.zhengjie.modules.system.domain.Dict;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -17,7 +16,7 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name="order_item")
-public class OrderItem implements Serializable {
+public class OrderItemPo implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,9 +60,9 @@ public class OrderItem implements Serializable {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private OrderMain orderMain;
+    private OrderMainPo orderMainPo;
 
-    public void copy(OrderItem source){
+    public void copy(OrderItemPo source){
         BeanUtil.copyProperties(source,this, CopyOptions.create().setIgnoreNullValue(true));
     }
 }

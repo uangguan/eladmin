@@ -2,7 +2,7 @@ package me.zhengjie.modules.order.rest;
 
 import me.zhengjie.aop.log.Log;
 import me.zhengjie.config.DataScope;
-import me.zhengjie.modules.order.domain.OrderMain;
+import me.zhengjie.modules.order.repository.OrderMainPo;
 import me.zhengjie.modules.order.service.OrderMainService;
 import me.zhengjie.modules.order.service.dto.OrderMainQueryCriteria;
 import me.zhengjie.modules.system.service.DeptService;
@@ -83,10 +83,10 @@ public class OrderMainController {
     }
 
     @PostMapping
-    @Log("新增订单管理")
+    @Log("新增订单")
     @ApiOperation("新增订单管理")
     @PreAuthorize("@el.check('orderMain:add')")
-    public ResponseEntity<Object> create(@Validated @RequestBody OrderMain resources){
+    public ResponseEntity<Object> create(@Validated @RequestBody OrderMainPo resources){
         return new ResponseEntity<>(orderMainService.create(resources),HttpStatus.CREATED);
     }
 
@@ -94,7 +94,7 @@ public class OrderMainController {
     @Log("修改订单管理")
     @ApiOperation("修改订单管理")
     @PreAuthorize("@el.check('orderMain:edit')")
-    public ResponseEntity<Object> update(@Validated @RequestBody OrderMain resources){
+    public ResponseEntity<Object> update(@Validated @RequestBody OrderMainPo resources){
         orderMainService.update(resources);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
