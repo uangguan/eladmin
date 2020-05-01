@@ -13,11 +13,11 @@ import java.util.List;
  * 状态模式嵌入领域模型Do，领域模型Do和持久化模型Po分离
  */
 @Data
-public class OrderDo {
+public class OrderMainDo {
 
     private OrderState currentState;
 
-    public OrderDo() {
+    public OrderMainDo() {
         this.currentState = new OrderInitedState(this);
     }
 

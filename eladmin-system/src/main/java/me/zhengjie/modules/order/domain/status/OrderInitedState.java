@@ -1,13 +1,13 @@
 package me.zhengjie.modules.order.domain.status;
 
-import me.zhengjie.modules.order.domain.OrderDo;
+import me.zhengjie.modules.order.domain.OrderMainDo;
 
 public class OrderInitedState implements OrderState {
 
-    private OrderDo orderDo;
+    private OrderMainDo orderMainDo;
 
-    public OrderInitedState(OrderDo orderDo) {
-        this.orderDo = orderDo;
+    public OrderInitedState(OrderMainDo orderMainDo) {
+        this.orderMainDo = orderMainDo;
     }
 
     @Override
@@ -19,7 +19,7 @@ public class OrderInitedState implements OrderState {
     public void checkOrder() {
         boolean hasInventory = true;
         if (hasInventory) {
-            orderDo.setCurrentState(new OrderCreatedState(orderDo));
+            orderMainDo.setCurrentState(new OrderCreatedState(orderMainDo));
         }
     }
 }

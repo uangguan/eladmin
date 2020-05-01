@@ -1,13 +1,13 @@
 package me.zhengjie.modules.order.domain.status;
 
-import me.zhengjie.modules.order.domain.OrderDo;
+import me.zhengjie.modules.order.domain.OrderMainDo;
 
 public class OrderUnPayState implements OrderState {
 
-    private OrderDo orderDo;
+    private OrderMainDo orderMainDo;
 
-    public OrderUnPayState(OrderDo orderDo) {
-        this.orderDo = orderDo;
+    public OrderUnPayState(OrderMainDo orderMainDo) {
+        this.orderMainDo = orderMainDo;
     }
 
     @Override
@@ -22,11 +22,11 @@ public class OrderUnPayState implements OrderState {
 
     @Override
     public void userCancleOrder() {
-        orderDo.setCurrentState(new OrderUserCancledState(orderDo));
+        orderMainDo.setCurrentState(new OrderUserCancledState(orderMainDo));
     }
 
     @Override
     public void timeOutCancleOrder() {
-        orderDo.setCurrentState(new OrderTimeOutCancledState(orderDo));
+        orderMainDo.setCurrentState(new OrderTimeOutCancledState(orderMainDo));
     }
 }
