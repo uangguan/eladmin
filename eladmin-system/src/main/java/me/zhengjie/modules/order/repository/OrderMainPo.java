@@ -143,7 +143,7 @@ public class OrderMainPo implements Serializable {
     @JoinColumn(name = "merchant_id")
     private Dept dept;
 
-    @OneToMany(mappedBy = "orderMain",cascade={CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToMany(mappedBy = "orderMainPo",cascade={CascadeType.PERSIST,CascadeType.REMOVE})
     private List<OrderItemPo> orderItemPos;
 
     public void copy(OrderMainPo source){
